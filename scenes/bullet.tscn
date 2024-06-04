@@ -7,10 +7,12 @@
 size = Vector2(8, 4)
 
 [node name="Bullet" type="RigidBody2D"]
+continuous_cd = 1
 script = ExtResource("1_o2tu4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.2)
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(0.5, 0.25)
 texture = ExtResource("1_5u851")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

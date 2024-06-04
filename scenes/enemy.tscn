@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm2q831hho70g"]
+[gd_scene load_steps=6 format=3 uid="uid://dm2q831hho70g"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_43pmp"]
 [ext_resource type="Texture2D" uid="uid://bgrel475isjx8" path="res://assets/player.png" id="1_88kv7"]
@@ -7,6 +7,9 @@
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypyn6"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vbgrh"]
+polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_43pmp")
@@ -20,7 +23,10 @@ shape = SubResource("RectangleShape2D_a0ue6")
 shape = SubResource("RectangleShape2D_ypyn6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.847059, 0.101961, 0.160784, 0.94902)
+modulate = Color(0.992157, 0.101961, 0.160784, 0.94902)
 texture = ExtResource("1_88kv7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_vbgrh")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
