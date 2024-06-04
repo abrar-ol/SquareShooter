@@ -17,8 +17,15 @@ func _physics_process(delta):
 
 func fire():
 	var bullet_instance =  bullet.instantiate()
+	bullet_instance.set_meta("tag","Bullet")
 	bullet_instance.position = get_global_position()
 	bullet_instance.rotation_degrees = rotation_degrees
 	bullet_instance.apply_impulse(Vector2(bullet_speed, 0).rotated(rotation))
 	get_tree().get_root().call_deferred("add_child",bullet_instance)
 
+func kill():
+	get_tree().reload_current_scene()
+
+func _on_area_2d_body_entered(body):
+	if "Enemy" == body.name:
+		kill()
